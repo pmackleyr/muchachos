@@ -1,15 +1,18 @@
 :root {
-  --chalk: #f4f1ea;
-  --chalk-soft: rgba(244, 241, 234, 0.82);
-  --ink: #0d0d0d;
-  --board: #121212;
+  --chalk: #f8f6f2;
+  --chalk-soft: rgba(248, 246, 242, 0.85);
+  --ink: #1c1c1c;
+  --ink-soft: rgba(28, 28, 28, 0.78);
+  --board: #151515;
   --board-deep: #050505;
-  --stroke: #d6d2c9;
+  --stroke: rgba(28, 28, 28, 0.15);
   --frame: rgba(244, 241, 234, 0.9);
-  --shadow: rgba(0, 0, 0, 0.5);
+  --shadow: rgba(0, 0, 0, 0.4);
   --dialog-bg: rgba(15, 15, 15, 0.96);
-  --footer-gray: rgba(244, 241, 234, 0.62);
-  --panel: rgba(255, 255, 255, 0.28);
+  --footer-gray: rgba(244, 241, 234, 0.72);
+  --panel: rgba(255, 255, 255, 0.92);
+  --accent: #e27a3f;
+  --accent-dark: #c65c25;
 }
 
 * {
@@ -19,11 +22,11 @@
 body {
   margin: 0;
   min-height: 100vh;
-  font-family: "Patrick Hand", "Comic Sans MS", cursive;
-  color: var(--chalk);
+  font-family: "Source Sans 3", "Noto Sans", sans-serif;
+  color: var(--ink);
   background-color: var(--board);
   position: relative;
-  letter-spacing: 0.02em;
+  letter-spacing: 0.01em;
   overflow: hidden;
 }
 
@@ -34,10 +37,11 @@ body {
     radial-gradient(circle at top, rgba(255, 255, 255, 0.06), transparent 55%),
     radial-gradient(circle at bottom, rgba(255, 255, 255, 0.05), transparent 50%),
     url("public/background.gif");
-  background-size: cover;
+  background-size: contain;
   background-position: center;
   background-repeat: no-repeat;
   animation: bg-drift 18s ease-in-out infinite alternate;
+  filter: saturate(1.15) contrast(1.05);
   z-index: 0;
 }
 
@@ -45,10 +49,11 @@ body {
   content: "";
   position: absolute;
   inset: 0;
-  background: linear-gradient(
-    180deg,
-    rgba(255, 255, 255, 0.06),
-    rgba(255, 255, 255, 0.12)
+  background: radial-gradient(
+    circle at center,
+    rgba(255, 255, 255, 0.18),
+    rgba(255, 255, 255, 0.02) 60%,
+    transparent 75%
   );
 }
 
@@ -58,8 +63,8 @@ body {
   flex-direction: column;
   justify-content: space-between;
   align-items: center;
-  padding: clamp(28px, 7vh, 90px) clamp(24px, 12vw, 180px)
-    calc(clamp(28px, 7vh, 90px) + env(safe-area-inset-bottom));
+  padding: clamp(20px, 6vh, 72px) clamp(20px, 10vw, 150px)
+    calc(clamp(20px, 6vh, 72px) + env(safe-area-inset-bottom));
   position: relative;
   z-index: 1;
 }
@@ -75,50 +80,48 @@ body {
 
 .site-title {
   margin: 0;
-  font-size: clamp(28px, 6vw, 48px);
+  font-size: clamp(22px, 3.6vw, 34px);
+  font-weight: 600;
   text-align: center;
-  text-shadow: 0 4px 16px rgba(0, 0, 0, 0.7);
+  color: var(--chalk);
+  text-shadow: 0 4px 14px rgba(0, 0, 0, 0.55);
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
 }
 
 .content {
-  max-width: min(680px, 70vw);
+  max-width: min(680px, 64vw);
   text-align: center;
   display: flex;
   flex-direction: column;
   gap: clamp(10px, 2.3vh, 18px);
-  padding: clamp(12px, 2.4vh, 24px) clamp(12px, 2.8vw, 26px);
+  padding: clamp(18px, 3vh, 30px) clamp(18px, 3.4vw, 32px);
   background: var(--panel);
-  border-radius: clamp(12px, 2.6vw, 20px);
-  border: 1px solid rgba(255, 255, 255, 0.4);
-  box-shadow: 0 16px 36px rgba(0, 0, 0, 0.25);
-  backdrop-filter: blur(12px) saturate(1.1);
+  border-radius: clamp(16px, 3.2vw, 26px);
+  border: 1px solid rgba(255, 255, 255, 0.7);
+  box-shadow: 0 20px 42px rgba(0, 0, 0, 0.18);
+  backdrop-filter: blur(6px) saturate(1.05);
   z-index: 1;
 }
 
 .content h1 {
-  font-size: clamp(30px, 7vw, 52px);
+  font-size: clamp(28px, 5.8vw, 46px);
   margin: 0;
-  color: var(--chalk);
-  text-shadow:
-    0 3px 10px rgba(0, 0, 0, 0.7),
-    0 8px 24px rgba(0, 0, 0, 0.6);
-  -webkit-text-stroke: 0.6px rgba(0, 0, 0, 0.35);
+  color: var(--ink);
+  font-weight: 700;
+  text-shadow: 0 8px 18px rgba(0, 0, 0, 0.15);
 }
 
 .content p {
   margin: 0;
-  font-size: clamp(18px, 3.4vw, 24px);
-  line-height: 1.55;
-  color: rgba(255, 255, 255, 0.98);
-  text-shadow:
-    0 2px 8px rgba(0, 0, 0, 0.75),
-    0 6px 16px rgba(0, 0, 0, 0.6);
-  -webkit-text-stroke: 0.4px rgba(0, 0, 0, 0.35);
+  font-size: clamp(16px, 2.8vw, 20px);
+  line-height: 1.6;
+  color: var(--ink-soft);
 }
 
 .content .cta {
-  font-size: clamp(19px, 3.6vw, 24px);
-  color: var(--chalk);
+  font-size: clamp(18px, 3vw, 22px);
+  color: var(--ink);
   font-weight: 600;
 }
 
@@ -147,31 +150,33 @@ body {
 }
 
 .contact-button {
-  font-family: "Patrick Hand", "Comic Sans MS", cursive;
-  font-size: clamp(22px, 4.4vw, 30px);
-  padding: 14px 40px;
-  border-radius: 22px;
-  border: 2px solid var(--stroke);
-  background-color: rgba(18, 18, 18, 0.8);
-  color: var(--chalk);
+  font-family: "Source Sans 3", "Noto Sans", sans-serif;
+  font-size: clamp(20px, 4.2vw, 28px);
+  padding: 14px 44px;
+  border-radius: 999px;
+  border: none;
+  background: linear-gradient(135deg, var(--accent), #f0a063);
+  color: #fff;
+  font-weight: 700;
+  letter-spacing: 0.02em;
   cursor: pointer;
-  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.5);
+  box-shadow: 0 16px 32px rgba(226, 122, 63, 0.45);
   transition: transform 0.2s ease, box-shadow 0.2s ease, filter 0.2s ease;
 }
 
 .contact-button:hover {
-  transform: translateY(-1px) scale(1.02);
-  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.55);
-  filter: brightness(1.08);
+  transform: translateY(-2px) scale(1.03);
+  box-shadow: 0 18px 36px rgba(226, 122, 63, 0.6);
+  filter: brightness(1.05);
 }
 
 .contact-button:active {
   transform: translateY(1px) scale(0.98);
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.45);
+  box-shadow: 0 8px 18px rgba(226, 122, 63, 0.35);
 }
 
 .contact-button:focus-visible {
-  outline: 2px solid var(--chalk);
+  outline: 3px solid rgba(226, 122, 63, 0.6);
   outline-offset: 3px;
 }
 
@@ -221,7 +226,7 @@ body {
 }
 
 .dialog-close {
-  font-family: "Patrick Hand", "Comic Sans MS", cursive;
+  font-family: "Source Sans 3", "Noto Sans", sans-serif;
   border: 2px solid var(--stroke);
   background: transparent;
   color: var(--chalk);
@@ -239,7 +244,7 @@ body {
 
 .contact-form input,
 .contact-form textarea {
-  font-family: "Patrick Hand", "Comic Sans MS", cursive;
+  font-family: "Source Sans 3", "Noto Sans", sans-serif;
   font-size: 16px;
   padding: 8px 12px;
   border-radius: 10px;
@@ -249,7 +254,7 @@ body {
 }
 
 .submit-button {
-  font-family: "Patrick Hand", "Comic Sans MS", cursive;
+  font-family: "Source Sans 3", "Noto Sans", sans-serif;
   font-size: 18px;
   border-radius: 12px;
   border: 2px solid var(--stroke);
@@ -308,5 +313,16 @@ body {
   .footer-left,
   .footer-right {
     text-align: center;
+  }
+}
+
+@media (max-width: 720px) {
+  .page {
+    padding: clamp(18px, 6vh, 46px) clamp(16px, 6vw, 48px)
+      calc(clamp(18px, 6vh, 46px) + env(safe-area-inset-bottom));
+  }
+
+  .content {
+    max-width: 92vw;
   }
 }
