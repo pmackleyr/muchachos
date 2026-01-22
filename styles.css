@@ -9,7 +9,7 @@
   --shadow: rgba(0, 0, 0, 0.5);
   --dialog-bg: rgba(15, 15, 15, 0.96);
   --footer-gray: rgba(244, 241, 234, 0.62);
-  --panel: rgba(6, 6, 6, 0.62);
+  --panel: rgba(255, 255, 255, 0.18);
 }
 
 * {
@@ -45,7 +45,11 @@ body {
   content: "";
   position: absolute;
   inset: 0;
-  background: rgba(5, 5, 5, 0.55);
+  background: linear-gradient(
+    180deg,
+    rgba(255, 255, 255, 0.06),
+    rgba(255, 255, 255, 0.12)
+  );
 }
 
 .page {
@@ -95,8 +99,9 @@ body {
   padding: clamp(14px, 2.6vh, 28px) clamp(12px, 3vw, 26px);
   background: var(--panel);
   border-radius: clamp(14px, 3vw, 22px);
-  border: 1px solid rgba(244, 241, 234, 0.2);
-  box-shadow: 0 18px 40px rgba(0, 0, 0, 0.45);
+  border: 1px solid rgba(244, 241, 234, 0.45);
+  box-shadow: 0 18px 40px rgba(0, 0, 0, 0.35);
+  backdrop-filter: blur(8px);
   z-index: 1;
 }
 
@@ -104,20 +109,21 @@ body {
   font-size: clamp(28px, 6.6vw, 46px);
   margin: 0;
   color: var(--chalk);
-  text-shadow: 0 3px 14px rgba(0, 0, 0, 0.7);
+  text-shadow: 0 4px 18px rgba(0, 0, 0, 0.75);
 }
 
 .content p {
   margin: 0;
   font-size: clamp(16px, 3vw, 22px);
   line-height: 1.5;
-  color: rgba(244, 241, 234, 0.94);
-  text-shadow: 0 2px 12px rgba(0, 0, 0, 0.65);
+  color: rgba(255, 255, 255, 0.98);
+  text-shadow: 0 3px 16px rgba(0, 0, 0, 0.8);
 }
 
 .content .cta {
-  font-size: clamp(15px, 2.8vw, 21px);
+  font-size: clamp(17px, 3.2vw, 22px);
   color: var(--chalk);
+  font-weight: 600;
 }
 
 .site-footer {
@@ -146,14 +152,14 @@ body {
 
 .contact-button {
   font-family: "Patrick Hand", "Comic Sans MS", cursive;
-  font-size: clamp(14px, 3vw, 18px);
-  padding: 6px 22px;
-  border-radius: 14px;
+  font-size: clamp(18px, 3.6vw, 24px);
+  padding: 10px 30px;
+  border-radius: 18px;
   border: 2px solid var(--stroke);
-  background-color: rgba(18, 18, 18, 0.75);
+  background-color: rgba(18, 18, 18, 0.8);
   color: var(--chalk);
   cursor: pointer;
-  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.4);
+  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.45);
   transition: transform 0.2s ease, box-shadow 0.2s ease, filter 0.2s ease;
 }
 
