@@ -1,0 +1,244 @@
+:root {
+  --chalk: #f4f1ea;
+  --chalk-soft: rgba(244, 241, 234, 0.82);
+  --ink: #0d0d0d;
+  --board: #121212;
+  --board-deep: #050505;
+  --stroke: #d6d2c9;
+  --frame: rgba(244, 241, 234, 0.9);
+  --shadow: rgba(0, 0, 0, 0.5);
+  --dialog-bg: rgba(15, 15, 15, 0.96);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  font-family: "Patrick Hand", "Comic Sans MS", cursive;
+  color: var(--chalk);
+  background-color: var(--board);
+  background-image:
+    radial-gradient(circle at top, rgba(255, 255, 255, 0.07), transparent 55%),
+    radial-gradient(circle at bottom, rgba(255, 255, 255, 0.05), transparent 50%),
+    url("bg/hero.gif");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  letter-spacing: 0.02em;
+  overflow: hidden;
+}
+
+.page {
+  min-height: 100svh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  padding: clamp(18px, 3.4vh, 36px) clamp(16px, 4vw, 48px)
+    calc(clamp(18px, 3.4vh, 36px) + env(safe-area-inset-bottom));
+  position: relative;
+}
+
+.page::before {
+  content: "";
+  position: absolute;
+  inset: clamp(12px, 2.5vh, 24px);
+  border: 2px solid var(--frame);
+  border-radius: clamp(18px, 3vw, 28px);
+  pointer-events: none;
+  box-shadow: 0 0 22px var(--shadow);
+}
+
+.site-header {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  padding-top: clamp(6px, 1.5vh, 12px);
+  text-transform: none;
+  z-index: 1;
+}
+
+.site-title {
+  margin: 0;
+  font-size: clamp(20px, 4.6vw, 30px);
+  text-align: center;
+  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.6);
+}
+
+.content {
+  max-width: 720px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  gap: clamp(10px, 2.3vh, 18px);
+  padding: clamp(10px, 2vh, 20px) clamp(6px, 2vw, 16px);
+  z-index: 1;
+}
+
+.content h1 {
+  font-size: clamp(22px, 5.4vw, 34px);
+  margin: 0;
+  color: var(--chalk);
+}
+
+.content p {
+  margin: 0;
+  font-size: clamp(14px, 2.6vw, 20px);
+  line-height: 1.35;
+  color: var(--chalk-soft);
+}
+
+.content .cta {
+  font-size: clamp(15px, 2.8vw, 21px);
+  color: var(--chalk);
+}
+
+.site-footer {
+  width: 100%;
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  align-items: center;
+  gap: clamp(12px, 4vw, 24px);
+  font-size: clamp(12px, 2.3vw, 16px);
+  z-index: 1;
+  padding-bottom: env(safe-area-inset-bottom);
+}
+
+.footer-left,
+.footer-right {
+  color: var(--chalk-soft);
+}
+
+.footer-left {
+  text-align: left;
+}
+
+.footer-right {
+  text-align: right;
+}
+
+.contact-button {
+  font-family: "Patrick Hand", "Comic Sans MS", cursive;
+  font-size: clamp(14px, 3vw, 18px);
+  padding: 6px 22px;
+  border-radius: 14px;
+  border: 2px solid var(--stroke);
+  background-color: rgba(18, 18, 18, 0.7);
+  color: var(--chalk);
+  cursor: pointer;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.4);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.contact-button:hover {
+  transform: translateY(-1px) scale(1.02);
+  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.55);
+}
+
+.contact-dialog {
+  border: 2px solid var(--stroke);
+  border-radius: 18px;
+  padding: 0;
+  background: var(--dialog-bg);
+  color: var(--chalk);
+  width: min(92vw, 520px);
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.6);
+}
+
+.contact-dialog::backdrop {
+  background: rgba(0, 0, 0, 0.65);
+}
+
+.contact-form {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  padding: 20px;
+}
+
+.dialog-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+}
+
+.dialog-header h2 {
+  margin: 0;
+  font-size: 22px;
+}
+
+.dialog-close {
+  font-family: "Patrick Hand", "Comic Sans MS", cursive;
+  border: 2px solid var(--stroke);
+  background: transparent;
+  color: var(--chalk);
+  border-radius: 999px;
+  padding: 4px 12px;
+  cursor: pointer;
+}
+
+.contact-form label {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  font-size: 16px;
+}
+
+.contact-form input,
+.contact-form textarea {
+  font-family: "Patrick Hand", "Comic Sans MS", cursive;
+  font-size: 16px;
+  padding: 8px 12px;
+  border-radius: 10px;
+  border: 1px solid rgba(244, 241, 234, 0.5);
+  background: rgba(10, 10, 10, 0.6);
+  color: var(--chalk);
+}
+
+.submit-button {
+  font-family: "Patrick Hand", "Comic Sans MS", cursive;
+  font-size: 18px;
+  border-radius: 12px;
+  border: 2px solid var(--stroke);
+  background: var(--chalk);
+  color: var(--ink);
+  padding: 8px 16px;
+  cursor: pointer;
+}
+
+.submit-button:hover {
+  filter: brightness(1.05);
+}
+
+@media (max-height: 640px) {
+  .content {
+    gap: 8px;
+  }
+
+  .content p {
+    font-size: clamp(12px, 2.4vw, 17px);
+  }
+
+  .site-footer {
+    font-size: 12px;
+  }
+}
+
+@media (max-width: 520px) {
+  .site-footer {
+    grid-template-columns: 1fr;
+    grid-template-rows: repeat(3, auto);
+    justify-items: center;
+    text-align: center;
+    gap: 6px;
+  }
+
+  .footer-left,
+  .footer-right {
+    text-align: center;
+  }
+}
