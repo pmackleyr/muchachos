@@ -14,6 +14,7 @@
   --accent: #e27a3f;
   --accent-dark: #c65c25;
   --frame-pad: clamp(18px, 6vh, 70px);
+  --footer-height: clamp(56px, 8vh, 72px);
 }
 
 * {
@@ -34,6 +35,11 @@ body {
 .bg {
   position: fixed;
   inset: 0;
+  --hero-height: calc(100svh - var(--footer-height));
+  --frame-size: min(
+    calc(100vw - (var(--frame-pad) * 2)),
+    calc(var(--hero-height) - (var(--frame-pad) * 2))
+  );
   background-image:
     radial-gradient(circle at top, rgba(255, 255, 255, 0.06), transparent 55%),
     radial-gradient(circle at bottom, rgba(255, 255, 255, 0.05), transparent 50%),
@@ -41,9 +47,8 @@ body {
   background-size:
     auto,
     auto,
-    calc(100% - (var(--frame-pad) * 2))
-      calc(100% - (var(--frame-pad) * 2));
-  background-position: center;
+    var(--frame-size) var(--frame-size);
+  background-position: center calc(var(--hero-height) / 2);
   background-repeat: no-repeat;
   animation: bg-drift 18s ease-in-out infinite alternate;
   filter: saturate(1.15) contrast(1.05);
@@ -53,7 +58,11 @@ body {
 .bg::before {
   content: "";
   position: absolute;
-  inset: var(--frame-pad);
+  width: var(--frame-size);
+  height: var(--frame-size);
+  left: 50%;
+  top: calc(var(--hero-height) / 2);
+  transform: translate(-50%, -50%);
   border-radius: clamp(18px, 6vw, 46px);
   box-shadow:
     0 0 0 1px rgba(255, 214, 140, 0.5),
@@ -76,10 +85,10 @@ body {
 
 .page {
   min-height: 100svh;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
+  display: grid;
+  grid-template-rows: 1fr auto;
   align-items: center;
+  justify-items: center;
   padding: clamp(26px, 9vh, 110px) clamp(22px, 14vw, 210px) 0;
   position: relative;
   z-index: 1;
@@ -148,14 +157,12 @@ body {
   gap: clamp(12px, 4vw, 24px);
   font-size: clamp(12px, 2.3vw, 16px);
   z-index: 1;
-  margin-top: auto;
-  padding: 16px clamp(18px, 6vw, 60px)
-    calc(16px + env(safe-area-inset-bottom));
+  height: var(--footer-height);
+  padding: 0 clamp(18px, 6vw, 60px);
   background: rgba(0, 0, 0, 0.85);
-  width: 100vw;
-  transform: translateX(-50%);
-  left: 50%;
+  width: 100%;
   position: relative;
+  justify-self: stretch;
 }
 
 .footer-left,
