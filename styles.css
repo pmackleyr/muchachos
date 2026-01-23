@@ -10,7 +10,7 @@
   --shadow: rgba(0, 0, 0, 0.4);
   --dialog-bg: rgba(15, 15, 15, 0.96);
   --footer-gray: rgba(244, 241, 234, 0.72);
-  --panel: rgba(255, 255, 255, 0.92);
+  --panel: rgba(255, 255, 255, 0.68);
   --accent: #e27a3f;
   --accent-dark: #c65c25;
 }
@@ -63,8 +63,8 @@ body {
   flex-direction: column;
   justify-content: space-between;
   align-items: center;
-  padding: clamp(20px, 6vh, 72px) clamp(20px, 10vw, 150px)
-    calc(clamp(20px, 6vh, 72px) + env(safe-area-inset-bottom));
+  padding: clamp(26px, 9vh, 110px) clamp(22px, 14vw, 210px)
+    calc(clamp(26px, 9vh, 110px) + env(safe-area-inset-bottom));
   position: relative;
   z-index: 1;
 }
@@ -90,22 +90,22 @@ body {
 }
 
 .content {
-  max-width: min(680px, 64vw);
+  max-width: min(520px, 56vw);
   text-align: center;
   display: flex;
   flex-direction: column;
   gap: clamp(10px, 2.3vh, 18px);
-  padding: clamp(18px, 3vh, 30px) clamp(18px, 3.4vw, 32px);
+  padding: clamp(14px, 2.6vh, 24px) clamp(16px, 3vw, 26px);
   background: var(--panel);
   border-radius: clamp(16px, 3.2vw, 26px);
-  border: 1px solid rgba(255, 255, 255, 0.7);
-  box-shadow: 0 20px 42px rgba(0, 0, 0, 0.18);
-  backdrop-filter: blur(6px) saturate(1.05);
+  border: 1px solid rgba(255, 255, 255, 0.8);
+  box-shadow: 0 16px 32px rgba(0, 0, 0, 0.16);
+  backdrop-filter: blur(4px) saturate(1.02);
   z-index: 1;
 }
 
 .content h1 {
-  font-size: clamp(28px, 5.8vw, 46px);
+  font-size: clamp(26px, 5.4vw, 40px);
   margin: 0;
   color: var(--ink);
   font-weight: 700;
@@ -114,13 +114,13 @@ body {
 
 .content p {
   margin: 0;
-  font-size: clamp(16px, 2.8vw, 20px);
+  font-size: clamp(15px, 2.6vw, 18px);
   line-height: 1.6;
   color: var(--ink-soft);
 }
 
 .content .cta {
-  font-size: clamp(18px, 3vw, 22px);
+  font-size: clamp(16px, 2.8vw, 20px);
   color: var(--ink);
   font-weight: 600;
 }
@@ -318,8 +318,8 @@ body {
 
 @media (max-width: 720px) {
   .page {
-    padding: clamp(18px, 6vh, 46px) clamp(16px, 6vw, 48px)
-      calc(clamp(18px, 6vh, 46px) + env(safe-area-inset-bottom));
+    padding: clamp(18px, 7vh, 60px) clamp(16px, 8vw, 70px)
+      calc(clamp(18px, 7vh, 60px) + env(safe-area-inset-bottom));
   }
 
   .content {
