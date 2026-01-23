@@ -13,6 +13,9 @@
     <link rel="stylesheet" href="styles.css" />
   </head>
   <body>
+    <header class="site-header" aria-label="Site header">
+      <a href="index.html" aria-label="Muchachos home">MUCHACHOS</a>
+    </header>
     <div class="frame-container" aria-label="Framed artwork">
       <img class="frame-image" src="public/frame.png" alt="" />
       <div class="image-mask">
@@ -32,13 +35,43 @@
             same day.
           </p>
           <p class="cta">Tap Contact below to order or learn how to help.</p>
+          <a class="contact-button" href="#contact">Contact</a>
         </div>
+      </div>
+    </div>
+
+    <div class="modal" id="contact" role="dialog" aria-modal="true">
+      <a class="modal-backdrop" href="#" aria-label="Close contact form"></a>
+      <div class="modal-card" role="document">
+        <div class="modal-header">
+          <h2>Contact Muchachos</h2>
+          <a class="modal-close" href="#" aria-label="Close contact form">×</a>
+        </div>
+        <form class="contact-form">
+          <label>
+            Name
+            <input type="text" name="name" autocomplete="name" required />
+          </label>
+          <label>
+            Phone
+            <input type="tel" name="phone" autocomplete="tel" />
+          </label>
+          <label>
+            Email
+            <input type="email" name="email" autocomplete="email" required />
+          </label>
+          <label>
+            Message
+            <textarea name="message" rows="4" required></textarea>
+          </label>
+          <button type="submit">Send Message</button>
+        </form>
       </div>
     </div>
 
     <footer class="site-footer">
       <span class="footer-left">@Muchachos LLC 2026</span>
-      <span class="footer-right">Legal</span>
+      <a class="footer-right" href="legal.html">Legal</a>
     </footer>
   </body>
 </html>
