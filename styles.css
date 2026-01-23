@@ -10,9 +10,10 @@
   --shadow: rgba(0, 0, 0, 0.4);
   --dialog-bg: rgba(15, 15, 15, 0.96);
   --footer-gray: rgba(244, 241, 234, 0.72);
-  --panel: rgba(255, 255, 255, 0.68);
+  --panel: transparent;
   --accent: #e27a3f;
   --accent-dark: #c65c25;
+  --frame-pad: clamp(18px, 6vh, 70px);
 }
 
 * {
@@ -37,12 +38,28 @@ body {
     radial-gradient(circle at top, rgba(255, 255, 255, 0.06), transparent 55%),
     radial-gradient(circle at bottom, rgba(255, 255, 255, 0.05), transparent 50%),
     url("public/background.gif");
-  background-size: contain;
+  background-size:
+    auto,
+    auto,
+    calc(100% - (var(--frame-pad) * 2))
+      calc(100% - (var(--frame-pad) * 2));
   background-position: center;
   background-repeat: no-repeat;
   animation: bg-drift 18s ease-in-out infinite alternate;
   filter: saturate(1.15) contrast(1.05);
   z-index: 0;
+}
+
+.bg::before {
+  content: "";
+  position: absolute;
+  inset: var(--frame-pad);
+  border-radius: clamp(18px, 6vw, 46px);
+  box-shadow:
+    0 0 0 1px rgba(255, 214, 140, 0.5),
+    0 0 18px rgba(255, 206, 120, 0.45),
+    0 18px 44px rgba(0, 0, 0, 0.35);
+  pointer-events: none;
 }
 
 .bg::after {
@@ -63,8 +80,7 @@ body {
   flex-direction: column;
   justify-content: space-between;
   align-items: center;
-  padding: clamp(26px, 9vh, 110px) clamp(22px, 14vw, 210px)
-    calc(clamp(26px, 9vh, 110px) + env(safe-area-inset-bottom));
+  padding: clamp(26px, 9vh, 110px) clamp(22px, 14vw, 210px) 0;
   position: relative;
   z-index: 1;
 }
@@ -95,12 +111,8 @@ body {
   display: flex;
   flex-direction: column;
   gap: clamp(10px, 2.3vh, 18px);
-  padding: clamp(14px, 2.6vh, 24px) clamp(16px, 3vw, 26px);
+  padding: clamp(10px, 2.2vh, 18px) clamp(12px, 2.6vw, 22px);
   background: var(--panel);
-  border-radius: clamp(16px, 3.2vw, 26px);
-  border: 1px solid rgba(255, 255, 255, 0.8);
-  box-shadow: 0 16px 32px rgba(0, 0, 0, 0.16);
-  backdrop-filter: blur(4px) saturate(1.02);
   z-index: 1;
 }
 
@@ -109,7 +121,9 @@ body {
   margin: 0;
   color: var(--ink);
   font-weight: 700;
-  text-shadow: 0 8px 18px rgba(0, 0, 0, 0.15);
+  text-shadow:
+    0 2px 10px rgba(255, 255, 255, 0.4),
+    0 8px 18px rgba(0, 0, 0, 0.2);
 }
 
 .content p {
@@ -117,6 +131,7 @@ body {
   font-size: clamp(15px, 2.6vw, 18px);
   line-height: 1.6;
   color: var(--ink-soft);
+  text-shadow: 0 2px 8px rgba(255, 255, 255, 0.35);
 }
 
 .content .cta {
@@ -133,7 +148,14 @@ body {
   gap: clamp(12px, 4vw, 24px);
   font-size: clamp(12px, 2.3vw, 16px);
   z-index: 1;
-  padding-bottom: env(safe-area-inset-bottom);
+  margin-top: auto;
+  padding: 16px clamp(18px, 6vw, 60px)
+    calc(16px + env(safe-area-inset-bottom));
+  background: rgba(0, 0, 0, 0.85);
+  width: 100vw;
+  transform: translateX(-50%);
+  left: 50%;
+  position: relative;
 }
 
 .footer-left,
@@ -155,24 +177,24 @@ body {
   padding: 14px 44px;
   border-radius: 999px;
   border: none;
-  background: linear-gradient(135deg, var(--accent), #f0a063);
-  color: #fff;
+  background: #fff;
+  color: #111;
   font-weight: 700;
   letter-spacing: 0.02em;
   cursor: pointer;
-  box-shadow: 0 16px 32px rgba(226, 122, 63, 0.45);
+  box-shadow: 0 16px 30px rgba(0, 0, 0, 0.2);
   transition: transform 0.2s ease, box-shadow 0.2s ease, filter 0.2s ease;
 }
 
 .contact-button:hover {
   transform: translateY(-2px) scale(1.03);
-  box-shadow: 0 18px 36px rgba(226, 122, 63, 0.6);
+  box-shadow: 0 20px 36px rgba(0, 0, 0, 0.25);
   filter: brightness(1.05);
 }
 
 .contact-button:active {
   transform: translateY(1px) scale(0.98);
-  box-shadow: 0 8px 18px rgba(226, 122, 63, 0.35);
+  box-shadow: 0 10px 18px rgba(0, 0, 0, 0.2);
 }
 
 .contact-button:focus-visible {
@@ -318,8 +340,7 @@ body {
 
 @media (max-width: 720px) {
   .page {
-    padding: clamp(18px, 7vh, 60px) clamp(16px, 8vw, 70px)
-      calc(clamp(18px, 7vh, 60px) + env(safe-area-inset-bottom));
+    padding: clamp(18px, 7vh, 60px) clamp(16px, 8vw, 70px) 0;
   }
 
   .content {
