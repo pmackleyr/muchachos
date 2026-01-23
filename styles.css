@@ -3,7 +3,7 @@
   --chalk-soft: rgba(248, 246, 242, 0.85);
   --ink: #1c1c1c;
   --ink-soft: rgba(28, 28, 28, 0.78);
-  --board: #151515;
+  --board: #111111;
   --board-deep: #050505;
   --stroke: rgba(28, 28, 28, 0.15);
   --frame: rgba(244, 241, 234, 0.9);
@@ -15,6 +15,11 @@
   --accent-dark: #c65c25;
   --frame-pad: clamp(18px, 6vh, 70px);
   --footer-height: clamp(56px, 8vh, 72px);
+  --hero-height: calc(100svh - var(--footer-height));
+  --frame-size: min(
+    calc(100vw - (var(--frame-pad) * 2)),
+    calc(var(--hero-height) - (var(--frame-pad) * 2))
+  );
 }
 
 * {
@@ -35,21 +40,7 @@ body {
 .bg {
   position: fixed;
   inset: 0;
-  --hero-height: calc(100svh - var(--footer-height));
-  --frame-size: min(
-    calc(100vw - (var(--frame-pad) * 2)),
-    calc(var(--hero-height) - (var(--frame-pad) * 2))
-  );
-  background-image:
-    radial-gradient(circle at top, rgba(255, 255, 255, 0.06), transparent 55%),
-    radial-gradient(circle at bottom, rgba(255, 255, 255, 0.05), transparent 50%),
-    url("public/background.gif");
-  background-size:
-    auto,
-    auto,
-    var(--frame-size) var(--frame-size);
-  background-position: center calc(var(--hero-height) / 2);
-  background-repeat: no-repeat;
+  background: var(--board);
   animation: bg-drift 18s ease-in-out infinite alternate;
   filter: saturate(1.15) contrast(1.05);
   z-index: 0;
@@ -74,13 +65,23 @@ body {
 .bg::after {
   content: "";
   position: absolute;
-  inset: 0;
-  background: radial-gradient(
-    circle at center,
-    rgba(255, 255, 255, 0.18),
-    rgba(255, 255, 255, 0.02) 60%,
-    transparent 75%
-  );
+  width: var(--frame-size);
+  height: var(--frame-size);
+  left: 50%;
+  top: calc(var(--hero-height) / 2);
+  transform: translate(-50%, -50%);
+  border-radius: clamp(18px, 6vw, 46px);
+  background-image:
+    radial-gradient(circle at top, rgba(255, 255, 255, 0.06), transparent 55%),
+    radial-gradient(circle at bottom, rgba(255, 255, 255, 0.05), transparent 50%),
+    url("public/background.gif");
+  background-size:
+    auto,
+    auto,
+    100% 100%;
+  background-position: center;
+  background-repeat: no-repeat;
+  box-shadow: 0 18px 40px rgba(0, 0, 0, 0.25);
 }
 
 .page {
@@ -115,7 +116,7 @@ body {
 }
 
 .content {
-  max-width: min(520px, 56vw);
+  max-width: min(520px, calc(var(--frame-size) - 120px));
   text-align: center;
   display: flex;
   flex-direction: column;
@@ -159,7 +160,7 @@ body {
   z-index: 1;
   height: var(--footer-height);
   padding: 0 clamp(18px, 6vw, 60px);
-  background: rgba(0, 0, 0, 0.85);
+  background: var(--board);
   width: 100%;
   position: relative;
   justify-self: stretch;
@@ -351,6 +352,6 @@ body {
   }
 
   .content {
-    max-width: 92vw;
+    max-width: min(92vw, calc(var(--frame-size) - 80px));
   }
 }
