@@ -47,7 +47,14 @@
           <h2>Contact Muchachos</h2>
           <a class="modal-close" href="#" aria-label="Close contact form">×</a>
         </div>
-        <form class="contact-form">
+        <form
+          class="contact-form"
+          action="mailto:parkerrevers@gmail.com"
+          method="get"
+          enctype="text/plain"
+        >
+          <input type="hidden" name="cc" value="mattrevers@yahoo.com" />
+          <input type="hidden" name="subject" value="Muchachos contact form" />
           <label>
             Name
             <input type="text" name="name" autocomplete="name" required />
