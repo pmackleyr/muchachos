@@ -512,7 +512,7 @@ body {
   }
 
   .recent-content {
-    gap: 16px;
+    gap: 12px;
   }
 
   .recent-entry {
@@ -602,7 +602,7 @@ body {
 .recent-content {
   display: flex;
   flex-direction: column;
-  gap: 22px;
+  gap: 16px;
   height: 100%;
 }
 
