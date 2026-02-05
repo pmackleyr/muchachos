@@ -1,0 +1,131 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Muchachos | Recent</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Source+Sans+3:wght@400;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="../styles.css" />
+  </head>
+  <body class="legal-page recent-page">
+    <div class="page">
+      <header class="site-header">
+        <a class="site-title" href="../index.html">Muchachos</a>
+      </header>
+
+      <main class="content recent-content">
+        <h1>Recent Impact</h1>
+
+        <article class="recent-entry">
+          <div class="recent-meta">
+            <h2>January 31, 2025</h2>
+            <p>100 sandwiches donated.</p>
+          </div>
+
+          <div
+            class="recent-carousel"
+            data-carousel
+            role="region"
+            aria-label="Impact photos from January 31, 2025"
+          >
+            <button class="carousel-btn prev" type="button" aria-label="Previous">
+              &#8249;
+            </button>
+
+            <div class="carousel-viewport">
+              <div class="carousel-track">
+                <figure class="carousel-slide is-active">
+                  <img
+                    src="../public/recent/recent-01.png"
+                    alt="Packaged sandwiches stacked on a dining table."
+                    loading="lazy"
+                  />
+                </figure>
+                <figure class="carousel-slide">
+                  <img
+                    src="../public/recent/recent-02.png"
+                    alt="More packaged sandwiches piled on a dining table."
+                    loading="lazy"
+                  />
+                </figure>
+                <figure class="carousel-slide">
+                  <img
+                    src="../public/recent/recent-03.png"
+                    alt="A kitchen with sandwiches being prepared."
+                    loading="lazy"
+                  />
+                </figure>
+                <figure class="carousel-slide">
+                  <img
+                    src="../public/recent/recent-04.png"
+                    alt="A storage bin filled with packaged sandwiches."
+                    loading="lazy"
+                  />
+                </figure>
+              </div>
+            </div>
+
+            <button class="carousel-btn next" type="button" aria-label="Next">
+              &#8250;
+            </button>
+
+            <div class="carousel-dots" role="tablist" aria-label="Slides">
+              <button class="carousel-dot is-active" type="button" aria-label="Slide 1"></button>
+              <button class="carousel-dot" type="button" aria-label="Slide 2"></button>
+              <button class="carousel-dot" type="button" aria-label="Slide 3"></button>
+              <button class="carousel-dot" type="button" aria-label="Slide 4"></button>
+            </div>
+          </div>
+        </article>
+      </main>
+
+      <footer class="site-footer">
+        <span class="footer-left">@Muchachos LLC 2026</span>
+        <span></span>
+        <a class="footer-right" href="../legal.html">Legal</a>
+      </footer>
+    </div>
+
+    <script>
+      const carousels = document.querySelectorAll("[data-carousel]");
+
+      carousels.forEach((carousel) => {
+        const track = carousel.querySelector(".carousel-track");
+        const slides = Array.from(carousel.querySelectorAll(".carousel-slide"));
+        const dots = Array.from(carousel.querySelectorAll(".carousel-dot"));
+        const prev = carousel.querySelector(".carousel-btn.prev");
+        const next = carousel.querySelector(".carousel-btn.next");
+        let index = 0;
+
+        const update = () => {
+          track.style.transform = `translateX(-${index * 100}%)`;
+          slides.forEach((slide, i) => {
+            slide.classList.toggle("is-active", i === index);
+            slide.setAttribute("aria-hidden", i === index ? "false" : "true");
+          });
+          dots.forEach((dot, i) => {
+            dot.classList.toggle("is-active", i === index);
+          });
+        };
+
+        const goTo = (nextIndex) => {
+          index = (nextIndex + slides.length) % slides.length;
+          update();
+        };
+
+        prev.addEventListener("click", () => goTo(index - 1));
+        next.addEventListener("click", () => goTo(index + 1));
+        dots.forEach((dot, dotIndex) => {
+          dot.addEventListener("click", () => goTo(dotIndex));
+        });
+
+        update();
+      });
+    </script>
+  </body>
+</html>
