@@ -400,6 +400,43 @@ body {
   }
 }
 
+@media (max-width: 420px) {
+  :root {
+    --frame-size: min(94vw, var(--frame-max), calc(100vh - 120px));
+    --frame-inset: 8%;
+    --frame-inset-ratio: 0.08;
+  }
+
+  .text-overlay {
+    gap: 4px;
+    padding: 14px;
+  }
+
+  .text-overlay h1 {
+    font-size: 18px;
+  }
+
+  .text-overlay p {
+    font-size: 11px;
+    line-height: 1.3;
+  }
+
+  .text-overlay .cta {
+    font-size: 11px;
+  }
+
+  .contact-button {
+    padding: 9px 18px;
+    font-size: 12px;
+    letter-spacing: 0.12em;
+  }
+
+  .recent-link {
+    font-size: 11px;
+    margin-top: 6px;
+  }
+}
+
 @media (max-height: 760px) {
   .text-overlay {
     padding: clamp(20px, 4vw, 32px);
