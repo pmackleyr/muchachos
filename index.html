@@ -3,99 +3,51 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Muchachos | Buy One. Feed Two.</title>
+    <title>Muchachos</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700&family=Syne:wght@500;700;800&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Source+Sans+3:wght@400;600;700&display=swap"
       rel="stylesheet"
     />
     <link rel="stylesheet" href="styles.css" />
   </head>
-  <body class="home-page">
-    <div class="bg" aria-hidden="true"></div>
-
-    <header class="site-header" aria-label="Primary navigation">
-      <a class="brand" href="index.html" aria-label="Muchachos home">Muchachos</a>
-      <nav class="nav-links" aria-label="Site links">
-        <a href="index.html" aria-current="page">Home</a>
-        <a href="recent/">Recent</a>
-        <a href="legal.html">Legal</a>
-      </nav>
+  <body>
+    <header class="site-header" aria-label="Site header">
+      <a href="index.html" aria-label="Muchachos home">MUCHACHOS</a>
     </header>
-
-    <main class="page home-shell">
-      <section class="glass-panel hero-panel" data-reveal>
-        <div class="hero-copy">
-          <p class="eyebrow">Community-Funded Meals</p>
+    <div class="frame-container" aria-label="Framed artwork">
+      <img class="frame-image" src="public/frame.png" alt="" />
+      <div class="image-mask">
+        <img class="inner-image" src="public/artwork.jpg" alt="" />
+        <div class="text-overlay">
           <h1>Buy One. Feed Two.</h1>
           <p>
-            For every sandwich you purchase, one is freshly made and donated to someone in need.
+            For every sandwich you purchase, one is freshly made and donated to
+            someone in need.
           </p>
           <p>
-            High quality ingredients: local sourdough, organic meat, stone-ground mustard, artisan
-            cheese, sliced pickles, and a chocolate chip cookie.
+            High Quality Ingredients: local sourdough, organic meat, stone-ground
+            mustard, artisan cheese, sliced pickles. And a chocolate chip cookie.
           </p>
-          <p>Prepared with care, refrigerated safely, and handed out fresh on the same day.</p>
-          <ul class="hero-stats" aria-label="Impact highlights">
-            <li>
-              <strong>100+</strong>
-              <span>sandwiches in latest run</span>
-            </li>
-            <li>
-              <strong>2x</strong>
-              <span>meals funded per purchase</span>
-            </li>
-            <li>
-              <strong>same day</strong>
-              <span>prepped and distributed fresh</span>
-            </li>
-          </ul>
-          <div class="hero-actions">
-            <a
-              class="btn-primary"
-              href="mailto:parkerrevers@gmail.com?cc=mattrevers@yahoo.com&subject=Muchachos%20contact%20form"
-              data-tilt
-              >Contact</a
-            >
-            <a class="btn-secondary" href="recent/" data-tilt>Recent Impact</a>
-          </div>
+          <p>
+            Prepared with care. Stored in proper refrigeration. 
+            Handed out fresh, same day.
+          </p>
+          <p class="cta">👇 Tap Contact below to order or help.</p>
+          <a
+            class="contact-button"
+            href="mailto:parkerrevers@gmail.com?cc=mattrevers@yahoo.com&subject=Muchachos%20contact%20form"
+            >Contact</a
+          >
+          <a class="recent-link" href="recent/">Recent Impact</a>
         </div>
+      </div>
+    </div>
 
-        <div class="hero-media" aria-label="Recent impact gallery">
-          <figure class="media-card media-main" data-tilt>
-            <img
-              src="public/recent/recent-01.png"
-              alt="Packaged sandwiches on a table ready for distribution."
-              loading="eager"
-            />
-          </figure>
-          <figure class="media-card media-top" data-tilt>
-            <img
-              src="public/recent/recent-03.png"
-              alt="A kitchen where sandwiches are prepared."
-              loading="lazy"
-            />
-          </figure>
-          <figure class="media-card media-bottom" data-tilt>
-            <img
-              src="public/recent/recent-04.png"
-              alt="A storage bin filled with freshly prepared sandwiches."
-              loading="lazy"
-            />
-          </figure>
-          <div class="glass-chip" data-tilt>
-            <strong>100 donated</strong>
-            <span>from the latest distribution</span>
-          </div>
-        </div>
-      </section>
-    </main>
-
-    <footer class="site-footer glass-panel" data-reveal>
+    <footer class="site-footer">
       <span class="footer-left">@Muchachos LLC 2026</span>
       <a class="footer-right" href="legal.html">Legal</a>
     </footer>
-    <script src="app.js" defer></script>
   </body>
 </html>

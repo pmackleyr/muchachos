@@ -7,25 +7,18 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700&family=Syne:wght@500;700;800&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Source+Sans+3:wght@400;600;700&display=swap"
       rel="stylesheet"
     />
     <link rel="stylesheet" href="../styles.css" />
   </head>
-  <body class="recent-page">
-    <div class="bg" aria-hidden="true"></div>
+  <body class="legal-page recent-page">
+    <div class="page">
+      <header class="site-header">
+        <a class="site-title" href="../index.html">Muchachos</a>
+      </header>
 
-    <header class="site-header" aria-label="Primary navigation">
-      <a class="brand" href="../index.html">Muchachos</a>
-      <nav class="nav-links" aria-label="Site links">
-        <a href="../index.html">Home</a>
-        <a href="./" aria-current="page">Recent</a>
-        <a href="../legal.html">Legal</a>
-      </nav>
-    </header>
-
-    <main class="page recent-shell">
-      <section class="glass-panel content-panel recent-content" data-reveal>
+      <main class="content recent-content">
         <h1>Recent Impact</h1>
 
         <article class="recent-entry">
@@ -44,7 +37,7 @@
               &#8249;
             </button>
 
-            <div class="carousel-viewport" tabindex="0" aria-label="Recent impact photos" data-tilt>
+            <div class="carousel-viewport">
               <div class="carousel-track">
                 <figure class="carousel-slide is-active">
                   <img
@@ -89,27 +82,24 @@
             </div>
           </div>
         </article>
-      </section>
-    </main>
+      </main>
 
-    <footer class="site-footer glass-panel" data-reveal>
-      <span class="footer-left">@Muchachos LLC 2026</span>
-      <a class="footer-right" href="../legal.html">Legal</a>
-    </footer>
+      <footer class="site-footer">
+        <span class="footer-left">@Muchachos LLC 2026</span>
+        <span></span>
+        <a class="footer-right" href="../legal.html">Legal</a>
+      </footer>
+    </div>
 
-    <script src="../app.js" defer></script>
     <script>
       const carousels = document.querySelectorAll("[data-carousel]");
 
       carousels.forEach((carousel) => {
         const track = carousel.querySelector(".carousel-track");
-        const viewport = carousel.querySelector(".carousel-viewport");
         const slides = Array.from(carousel.querySelectorAll(".carousel-slide"));
         const dots = Array.from(carousel.querySelectorAll(".carousel-dot"));
         const prev = carousel.querySelector(".carousel-btn.prev");
         const next = carousel.querySelector(".carousel-btn.next");
-        let pointerStartX = 0;
-        let pointerDeltaX = 0;
         let index = 0;
 
         const update = () => {
@@ -120,7 +110,6 @@
           });
           dots.forEach((dot, i) => {
             dot.classList.toggle("is-active", i === index);
-            dot.setAttribute("aria-current", i === index ? "true" : "false");
           });
         };
 
@@ -133,42 +122,6 @@
         next.addEventListener("click", () => goTo(index + 1));
         dots.forEach((dot, dotIndex) => {
           dot.addEventListener("click", () => goTo(dotIndex));
-        });
-
-        viewport.addEventListener("keydown", (event) => {
-          if (event.key === "ArrowLeft") {
-            event.preventDefault();
-            goTo(index - 1);
-          } else if (event.key === "ArrowRight") {
-            event.preventDefault();
-            goTo(index + 1);
-          }
-        });
-
-        viewport.addEventListener("pointerdown", (event) => {
-          pointerStartX = event.clientX;
-          pointerDeltaX = 0;
-          viewport.setPointerCapture(event.pointerId);
-        });
-
-        viewport.addEventListener("pointermove", (event) => {
-          pointerDeltaX = event.clientX - pointerStartX;
-        });
-
-        viewport.addEventListener("pointerup", (event) => {
-          if (viewport.hasPointerCapture(event.pointerId)) {
-            viewport.releasePointerCapture(event.pointerId);
-          }
-          if (Math.abs(pointerDeltaX) < 36) return;
-          if (pointerDeltaX > 0) {
-            goTo(index - 1);
-          } else {
-            goTo(index + 1);
-          }
-        });
-
-        viewport.addEventListener("pointercancel", () => {
-          pointerDeltaX = 0;
         });
 
         update();
