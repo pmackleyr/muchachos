@@ -7,70 +7,70 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Source+Sans+3:wght@400;600;700&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700&family=Syne:wght@500;700;800&display=swap"
       rel="stylesheet"
     />
     <link rel="stylesheet" href="styles.css" />
   </head>
   <body class="legal-page">
     <div class="bg" aria-hidden="true"></div>
-    <div class="page">
-      <header class="site-header">
-        <a class="site-title" href="index.html">Muchachos</a>
-      </header>
 
-      <main class="content">
+    <header class="site-header" aria-label="Primary navigation">
+      <a class="brand" href="index.html">Muchachos</a>
+      <nav class="nav-links" aria-label="Site links">
+        <a href="index.html">Home</a>
+        <a href="recent/">Recent</a>
+        <a href="legal.html" aria-current="page">Legal</a>
+      </nav>
+    </header>
+
+    <main class="page legal-shell">
+      <section class="glass-panel content-panel" data-reveal>
         <h1>Legal</h1>
-        <p>
-          This page is a simple, plain-language summary of how we operate.
-          By using this site or placing an order, you agree to these terms.
+        <p class="lede">
+          This page is a plain-language summary of how we operate. By using this site or placing
+          an order, you agree to these terms.
         </p>
         <p>
-          <strong>Services.</strong> Muchachos provides sandwiches and related
-          community support. Availability, menu, and donation timing may change
-          without notice.
+          <strong>Services.</strong> Muchachos provides sandwiches and related community support.
+          Availability, menu, and donation timing may change without notice.
         </p>
         <p>
-          <strong>Donations.</strong> We aim to donate one sandwich for each
-          sandwich purchased. Circumstances such as supply, safety, and local
-          conditions may affect timing, location, or method of distribution.
+          <strong>Donations.</strong> We aim to donate one sandwich for each sandwich purchased.
+          Circumstances such as supply, safety, and local conditions may affect timing, location,
+          or method of distribution.
         </p>
         <p>
-          <strong>Privacy.</strong> We only collect information you send to us
-          (like name, email, phone, and message). We use it to respond to you,
-          fulfill orders, or coordinate support. We do not sell your data.
+          <strong>Privacy.</strong> We only collect information you send to us (like name, email,
+          phone, and message). We use it to respond to you, fulfill orders, or coordinate support.
+          We do not sell your data.
         </p>
         <p>
-          <strong>Health &amp; safety.</strong> We handle food with care and
-          follow safe preparation practices. If you have allergies or dietary
-          concerns, let us know before ordering.
+          <strong>Health and safety.</strong> We handle food with care and follow safe preparation
+          practices. If you have allergies or dietary concerns, let us know before ordering.
         </p>
         <p>
-          <strong>Liability.</strong> We provide this site and our services “as
-          is.” To the maximum extent allowed by law, Muchachos is not liable for
-          indirect, incidental, or consequential damages.
+          <strong>Liability.</strong> We provide this site and our services "as is." To the maximum
+          extent allowed by law, Muchachos is not liable for indirect, incidental, or consequential
+          damages.
         </p>
         <p>
-          <strong>Copyright.</strong> All site content belongs to Muchachos
-          unless otherwise noted. Please ask before reusing it.
+          <strong>Copyright.</strong> All site content belongs to Muchachos unless otherwise noted.
+          Please ask before reusing it.
         </p>
         <p>
           <strong>Contact.</strong> Questions? Email
-          <a class="footer-link" href="mailto:contact@muchachos.charity"
-            >contact@muchachos.charity</a
-          >.
+          <a class="footer-link" href="mailto:contact@muchachos.charity">contact@muchachos.charity</a>.
         </p>
         <p>Effective date: March 2026.</p>
-        <p class="cta">
-          <a class="footer-link" href="index.html">Back to home</a>
-        </p>
-      </main>
+        <p><a class="footer-link" href="index.html">Back to home</a></p>
+      </section>
+    </main>
 
-      <footer class="site-footer">
-        <span class="footer-left">@Muchachos LLC 2026</span>
-        <span></span>
-        <span class="footer-right">Legal</span>
-      </footer>
-    </div>
+    <footer class="site-footer glass-panel" data-reveal>
+      <span class="footer-left">@Muchachos LLC 2026</span>
+      <span class="footer-right">Legal</span>
+    </footer>
+    <script src="app.js" defer></script>
   </body>
 </html>
